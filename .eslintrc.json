@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:node/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": ["prettier", "jsx-a11y", "html"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "func-names": "off",
+    "object-shorthand": "off"
+  }
+}
