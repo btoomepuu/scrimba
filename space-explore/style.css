@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  color: #82a5ca;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-weight: 700;
+}
+
+#hero {
+  background-image: url("imgs/galaxy.webp");
+  background-size: cover;
+  padding: 10px 0 40px 0;
+}
+
+#main-logo {
+  width: 150px;
+}
+
+#title {
+  text-shadow: 0 0 4px black;
+}
+
+.apply-btn {
+  font-family: "Orbitron", sans-serif;
+  background-color: white;
+  color: #82a5ca;
+  padding: 6px 12px;
+  border: none;
+  font-weight: 700;
+}
+
+.underline {
+  border-bottom: 5px solid white;
+}
+
+/* textshadow: horizontal vertical blur color */
