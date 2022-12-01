@@ -1,0 +1,107 @@
+/* 
+$snow: rgba(251, 248, 251, 1);
+$mauvelous: rgba(250, 163, 172, 1);
+$african-violet: rgba(178, 125, 184, 1);
+$deep-champagne: rgba(246, 211, 141, 1);
+$champagne-pink: rgba(248, 229, 215, 1); */
+
+body {
+  font-family: 'Pacifico', cursive;
+  color: rgba(251, 203, 81, 1);
+  transition: all 0.5s ease-out;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(153, 110, 158, 1),
+    transparent,
+    rgba(249, 140, 152, 1)
+  );
+  text-align: center;
+}
+
+.shadow {
+  text-shadow: 0 0 1px black;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#age {
+  margin: 5px 0 10px 0;
+  background-color: rgba(250, 163, 172, 1);
+  border-radius: 4px;
+  padding: 0 5px;
+}
+
+#b-date {
+  margin: 0;
+  background-color: rgba(250, 163, 172, 1);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+#pic-angela {
+  width: 150px;
+  border-radius: 50%;
+  border: 5px solid rgba(250, 163, 172, 1);
+}
+
+.gift {
+  margin-bottom: 50px 0 0 0;
+}
+
+.gift-title {
+  margin: 50px 0 15px 0;
+}
+
+.gift-hint {
+  margin: 0 0 15px 0;
+  margin-bottom: 15px;
+}
+
+.gift-wrap {
+  background-image: url('imgs/bday-paper.jpeg');
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  margin: 0;
+  border: 6px solid rgba(251, 248, 251, 1);
+  border-radius: 8px;
+  transition: all 0.5s ease-out;
+}
+
+#office-bday-gift:hover {
+  background-image: url('imgs/office-bday.gif');
+}
+
+#so-hot:hover {
+  background-image: url('imgs/so-hot.gif');
+}
+
+#beyonce:hover {
+  background-image: url('imgs/beyonce.gif');
+}
+
+#bff:hover {
+  background-image: url('imgs/bffs.gif');
+}
+
+#gift-img-cheers:hover {
+  background-image: url('imgs/cheers.gif');
+}
+
+#footer {
+  margin: 40px auto 20px;
+  font-size: medium;
+  width: 400px;
+}
+
+.link-style {
+  color: inherit;
+}
+
+.link-style:visited {
+  text-decoration: none;
+}
