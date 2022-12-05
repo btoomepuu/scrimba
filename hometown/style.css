@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: none !important;
+}
+
+body {
+  background-color: rgb(254, 254, 250);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-shadow {
+  text-shadow: black 0.5px 0.5px;
+}
+
+#hero-img {
+  color: rgb(254, 254, 250);
+  padding: 15% 0;
+  background-image: url(imgs/tampa-bay.png);
+  background-size: cover;
+  text-align: center;
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hero-header {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  padding: 0 5px;
+  font-family: 'Solway', serif;
+  background-color: rgba(13, 115, 127, 0.4);
+  border-radius: 3px;
+}
+
+#hero-text {
+  font-size: 1.3em;
+  font-weight: 400;
+  background-color: rgba(13, 115, 127, 0.4);
+  border-radius: 3px;
+}
+
+#activities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: rgba(12, 29, 33, 0.9);
+  background: linear-gradient(transparent 1%, rgba(13, 115, 127, 1) 60%);
+}
+
+#activities-title {
+  margin: 2em 0;
+  font-size: 1.6em;
+  width: 100%;
+  font-family: 'Solway', serif;
+}
+
+.activity {
+  width: calc(100% / 3);
+}
+
+.activity-head {
+  font-size: 1.2em;
+  transition: 0.2s ease-out;
+}
+
+.activity-head:hover {
+  transform: scale(1.2);
+}
+
+.activity-img {
+  width: 60%;
+  margin: 2em 0;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.activity-img:hover {
+  width: 68%;
+  filter: drop-shadow(0 0 0.5rem black);
+}
+
+.activity-p {
+  margin: 0 2.5em;
+  padding: 0 1em 2em 1em;
+  font-size: 1.1em;
+  line-height: 1.3em;
+}
+
+#card-container {
+  padding: 8em 16em;
+}
+
+#brennon-card {
+  margin: 3em 6em;
+  background-color: rgba(218, 209, 204, 1);
+  border-bottom: solid 5px rgba(13, 115, 127);
+  border-radius: 5px;
+  display: flex;
+}
+
+#img-brennon-container {
+  max-width: calc(100% / 2);
+  height: auto;
+  padding: 2em;
+}
+
+#brennon-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#card-paragraph {
+  max-width: calc(100% / 2);
+  align-self: center;
+  padding: 2em;
+}
