@@ -107,6 +107,7 @@ a {
   border-bottom: solid 5px rgba(13, 115, 127);
   border-radius: 5px;
   display: flex;
+  align-items: center;
 }
 
 #img-brennon-container {
@@ -120,8 +121,13 @@ a {
   border-radius: 5px;
 }
 
-#card-paragraph {
+#guide-container {
   max-width: calc(100% / 2);
-  align-self: center;
-  padding: 2em;
+}
+
+#guide-paragraph {
+  margin: 2em 0;
+}
+#guide-name {
+  font-weight: 500;
 }
