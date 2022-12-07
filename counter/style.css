@@ -11,13 +11,8 @@ body {
 }
 
 #container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
   background-image: url('gym.png'),
     linear-gradient(rgba(24, 19, 0, 1), rgba(182, 152, 47, 1));
-  background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
 }

@@ -1,0 +1,171 @@
+/* yellow #e0a458
+green  color: #419d78
+*/
+
+@font-face {
+  font-family: Digital;
+  src: url(digital-7.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  cursor: url(basketball-duotone.svg), auto;
+}
+
+button {
+  cursor: pointer;
+  color: aliceblue;
+  border: 2px solid aliceblue;
+}
+
+button:hover {
+  color: rgba(65, 157, 120, 1);
+  border: 2px solid rgba(65, 157, 120, 0.4);
+}
+
+.hidden {
+  display: none;
+}
+
+.digital-text {
+  font-family: Digital, sans-serif;
+}
+.fucshia {
+  color: c04abc;
+}
+
+.lt-orange {
+  color: #ffdbb5;
+}
+
+.black {
+  background-color: #252225;
+}
+
+body {
+  background-color: #fffafa;
+  color: aliceblue;
+}
+
+#container {
+  display: flex;
+  margin: 25% auto;
+  width: 600px;
+  height: 330px;
+  background-color: #2d3047;
+  border-radius: 5px;
+  border: 6px solid #419d78;
+}
+
+.team-scores {
+  width: calc(100% / 3);
+  text-align: center;
+}
+
+.team-name {
+  margin: 10px 0;
+}
+
+.points {
+  margin: auto;
+  width: 80px;
+  height: 60px;
+  padding: 2px 2px 0 0;
+  text-align: right;
+  font-size: 68px;
+}
+
+.bonus {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin: 10px 0 15px 0;
+  padding-top: 5px;
+  font-size: 30px;
+}
+
+.fouls {
+  display: inline;
+  font-size: 20px;
+}
+
+.add-foul {
+  display: inline;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  font-size: 12px;
+  background: none;
+  color: aliceblue;
+}
+.foul-score {
+  margin: 2px auto 15px auto;
+  padding: 4px 4px 0 0;
+  width: 60px;
+  height: 50px;
+  font-size: 55px;
+  text-align: right;
+  color: #e0a458;
+}
+
+.add-point {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  font-size: 18px;
+  background: none;
+  color: aliceblue;
+}
+
+#b-ball {
+  text-align: center;
+}
+.fa-basketball-hoop {
+  margin: 10px 0 10px 0;
+  font-size: 45px;
+}
+
+#time-period {
+  width: calc(100% / 3);
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+#timer {
+  margin: 0 auto 10px auto;
+  padding-top: 8px;
+  width: 140px;
+  height: 70px;
+  font-size: 65px;
+  color: #e0a458;
+}
+
+#period-number {
+  width: 45px;
+  height: 35px;
+  margin: 0 auto 5px auto;
+  padding-top: 3px;
+  font-size: 35px;
+  text-align: center;
+  color: #e0a458;
+}
+
+#period {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#start-btn,
+#pause-btn,
+#reset-btn {
+  display: block;
+  margin: 0 auto 8px auto;
+  width: 75px;
+  height: 30px;
+  background: none;
+  font-size: 20px;
+}
