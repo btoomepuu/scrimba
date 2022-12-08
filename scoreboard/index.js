@@ -18,9 +18,73 @@ const pauseBtn = document.getElementById('pause-btn');
 const resetBtn = document.getElementById('reset-btn');
 
 const timer = document.getElementById('timer');
+let inPlay = false;
 
 let time = 720;
 let counter;
+
+homeTeam.addEventListener('click', (e) => {
+  if (inPlay) {
+  }
+
+  const target = e.target.id;
+
+  switch (target) {
+    case 'home1-point':
+      addPoints('home', 1);
+      break;
+    case 'home2-point':
+      addPoints('home', 2);
+      break;
+    case 'home3-point':
+      addPoints('home', 3);
+      break;
+    case 'home-add-foul':
+      addFoul('home');
+      break;
+  }
+
+  checkWinner();
+});
+
+guestTeam.addEventListener('click', (e) => {
+  if (inPlay) {
+  }
+
+  const target = e.target.id;
+
+  switch (target) {
+    case 'guest1-point':
+      addPoints('guest', 1);
+      break;
+    case 'guest2-point':
+      addPoints('guest', 2);
+      break;
+    case 'guest3-point':
+      addPoints('guest', 3);
+      break;
+    case 'guest-add-foul':
+      addFoul('guest');
+      break;
+  }
+  checkWinner();
+});
+
+timeBtns.addEventListener('click', (e) => {
+  if (e.target.id === 'start-btn') {
+    inPlay = true;
+    startBtn.style = 'display: none';
+    pauseBtn.style = 'display: block';
+    counter = setInterval(() => {
+      countDown();
+    }, 1000);
+  } else if (e.target.id === 'pause-btn') {
+    inPlay = false;
+    pauseBtn.style = 'display: none';
+    startBtn.style = 'display: block';
+    clearInterval(counter);
+  } else reset();
+});
 
 function countDown() {
   time--;
@@ -53,41 +117,15 @@ function setPeriod() {
   }
 }
 
-function addOne(targetTeam) {
+function addPoints(targetTeam, points) {
   let score;
   if (targetTeam === 'home') {
     score = parseInt(homePoints.textContent);
-    score += 1;
+    score += points;
     homePoints.textContent = score;
   } else {
     score = parseInt(guestPoints.textContent);
-    score += 1;
-    guestPoints.textContent = score;
-  }
-}
-
-function addTwo(targetTeam) {
-  let score;
-  if (targetTeam === 'home') {
-    score = parseInt(homePoints.textContent);
-    score += 2;
-    homePoints.textContent = score;
-  } else {
-    score = parseInt(guestPoints.textContent);
-    score += 2;
-    guestPoints.textContent = score;
-  }
-}
-
-function addThree(targetTeam) {
-  let score;
-  if (targetTeam === 'home') {
-    score = parseInt(homePoints.textContent);
-    score += 3;
-    homePoints.textContent = score;
-  } else {
-    score = parseInt(guestPoints.textContent);
-    score += 3;
+    score += points;
     guestPoints.textContent = score;
   }
 }
@@ -161,58 +199,3 @@ function resetTime() {
   time = 720;
   timer.textContent = '12:00';
 }
-
-homeTeam.addEventListener('click', (e) => {
-  const target = e.target.id;
-
-  switch (target) {
-    case 'home1-point':
-      addOne('home');
-      break;
-    case 'home2-point':
-      addTwo('home');
-      break;
-    case 'home3-point':
-      addThree('home');
-      break;
-    case 'home-add-foul':
-      addFoul('home');
-      break;
-  }
-
-  checkWinner();
-});
-
-guestTeam.addEventListener('click', (e) => {
-  const target = e.target.id;
-
-  switch (target) {
-    case 'guest1-point':
-      addOne('guest');
-      break;
-    case 'guest2-point':
-      addTwo('guest');
-      break;
-    case 'guest3-point':
-      addThree('guest');
-      break;
-    case 'guest-add-foul':
-      addFoul('guest');
-      break;
-  }
-  checkWinner();
-});
-
-timeBtns.addEventListener('click', (e) => {
-  if (e.target.id === 'start-btn') {
-    startBtn.style = 'display: none';
-    pauseBtn.style = 'display: block';
-    counter = setInterval(() => {
-      countDown();
-    }, 1000);
-  } else if (e.target.id === 'pause-btn') {
-    pauseBtn.style = 'display: none';
-    startBtn.style = 'display: block';
-    clearInterval(counter);
-  } else reset();
-});

@@ -12,6 +12,8 @@
     "func-names": "off",
     "object-shorthand": "off",
     "no-plusplus": "off",
-    "browser": "true"
+    "browser": "true",
+    "singleQuote": true,
+    "singleAttributePerLine": false
   }
 }
