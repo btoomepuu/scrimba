@@ -5,6 +5,11 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 // choose pwd length,
 // copy on click,
 // symbols or numbers in pwd
+let options = {
+  letters: true,
+  numbers: true,
+  symbols: false,
+};
 
 const container = document.querySelector('#container');
 const displayPwdLength = document.querySelector('#display-length');
@@ -23,7 +28,6 @@ let pwdLength = slider.value;
 
 slider.addEventListener('input', (e) => {
   pwdLength = slider.value;
-  console.log(pwdLength);
   displayPwdLength.textContent = `Length (${slider.value})`;
 
   if (slider.value >= 16) {
@@ -38,40 +42,61 @@ slider.addEventListener('input', (e) => {
 pwdOptions.addEventListener('change', (e) => {
   switch (e.target.id) {
     case 'letters-box':
-      lettersChecked = e.target.checked;
-      console.log(lettersChecked);
+      options.letters = e.target.checked;
       break;
     case 'numbers-box':
-      numbersChecked = e.target.checked;
-      console.log(numbersChecked);
+      options.numbers = e.target.checked;
       break;
     case 'symbols-box':
-      symbolsChecked = e.target.checked;
-      console.log('sym');
+      options.symbols = e.target.checked;
       break;
   }
 });
 
 pwdGenerateBtn.addEventListener('click', (e) => {
-  if (
-    numbersChecked === false &&
-    lettersChecked === false &&
-    symbolsChecked === false
-  ) {
+  let validOption = checkBoxes();
+  if (validOption) {
+    randomPwdOne = generateRandomPwd(pwdLength);
+    randomPwdTwo = generateRandomPwd(pwdLength);
+    pwdOneEl.textContent = randomPwdOne;
+    pwdTwoEl.textContent = randomPwdTwo;
+  } else {
     alert('You must check at least one box.');
   }
-  randomPwdOne = generateRandomPwd(pwdLength);
-  randomPwdTwo = generateRandomPwd(pwdLength);
-  pwdOneEl.textContent = randomPwdOne;
-  pwdTwoEl.textContent = randomPwdTwo;
   e.preventDefault();
 });
 
+function checkBoxes() {
+  for (const key in options) {
+    if (options[key]) {
+      return true;
+    }
+  }
+}
+
 function generateRandomPwd(length) {
   let newPwd = '';
+  let pwdChars = charsIncluded();
   while (newPwd.length < length) {
-    let char = Math.floor(Math.random() * 91);
-    newPwd += characters[char];
+    let charIndex = Math.floor(Math.random() * pwdChars.length);
+    newPwd += pwdChars[charIndex];
   }
   return newPwd;
+}
+
+function charsIncluded() {
+  let chars = [];
+  if (options.letters) {
+    chars = chars.concat(characters.slice(0, 52));
+  }
+
+  if (options.numbers) {
+    chars = chars.concat(characters.slice(52, 62));
+  }
+
+  if (options.symbols) {
+    chars = chars.concat(characters.slice(62, 91));
+  }
+
+  return chars;
 }
