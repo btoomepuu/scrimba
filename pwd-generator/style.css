@@ -1,0 +1,56 @@
+/* colors
+$charcoal: rgba(38, 70, 83, 1);
+$bud-green: rgba(95, 173, 86, 1);
+$maize-crayola: rgba(242, 193, 78, 1);
+$coral: rgba(247, 129, 84, 1);
+$illuminating-emerald: rgba(77, 144, 120, 1);
+$irresistible: rgba(180, 67, 108, 1);*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1c1c1c;
+  color: aliceblue;
+}
+
+#container {
+  margin: 5% auto 0 auto;
+  padding: 5%;
+  width: 400px;
+  height: 400px;
+  background: #273549;
+  border-radius: 5px;
+}
+
+#slider {
+  height: 10px;
+  width: 100%;
+  appearance: none;
+  border-radius: 5px;
+  background: rgb(240, 248, 255, 0.7);
+  opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: aliceblue;
+}
+
+input[type='checkbox'] {
+  accent-color: #10b981;
+}
+
+#pwd-generate-btn {
+  background: none;
+}
+/* utilities */
+.pointer {
+  cursor: pointer;
+}

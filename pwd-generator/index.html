@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Generate a random password</h1>
+        <p>Never use an insecure password again.</p>
+      </header>
+
+      <form name="generate-options">
+        <div id="pwd-length">
+          <p id="display-length">Length(21)</p>
+          <input
+            type="range"
+            id="slider"
+            class="pointer"
+            min="6"
+            max="42"
+            value="21"
+          />
+        </div>
+
+        <div id="pwd-options">
+          <input
+            type="checkbox"
+            class="pointer"
+            name="letters"
+            id="letters-box"
+            checked
+          />
+          <label for="letters-box">Letters</label>
+
+          <input
+            type="checkbox"
+            name="numbers"
+            id="numbers-box"
+            class="pointer"
+            checked
+          /><label for="numbers-box">Numbers</label>
+
+          <input
+            type="checkbox"
+            name="symbols"
+            id="symbols-box"
+            class="pointer"
+          /><label for="symbols-box">Symbols</label>
+        </div>
+
+        <button
+          id="pwd-generate-btn"
+          class="pointer"
+          style="background-color: #10b981"
+        >
+          Generate Passwords
+        </button>
+      </form>
+
+      <section id="pwd-section">
+        <p id="pwd-one"></p>
+        <p id="pwd-two"></p>
+      </section>
+
+      <script src="index.js"></script>
+    </div>
+  </body>
+</html>
