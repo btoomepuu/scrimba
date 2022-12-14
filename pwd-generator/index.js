@@ -5,29 +5,25 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 // choose pwd length,
 // copy on click,
 // symbols or numbers in pwd
-let options = {
-  letters: true,
-  numbers: true,
-  symbols: false,
-};
 
-const container = document.querySelector('#container');
 const displayPwdLength = document.querySelector('#display-length');
 const slider = document.querySelector('#slider');
 const pwdGenerateBtn = document.querySelector('#pwd-generate-btn');
 const pwdOneEl = document.querySelector('#pwd-one');
 const pwdTwoEl = document.querySelector('#pwd-two');
 const pwdOptions = document.querySelector('#pwd-options');
+const pwdSection = document.querySelector('#pwd-section');
+
+let options = {
+  letters: true,
+  numbers: true,
+  symbols: false,
+};
 
 let randomPwdOne = '';
 let randomPwdTwo = '';
-let lettersChecked = true;
-let numbersChecked = true;
-let symbolsChecked = false;
-let pwdLength = slider.value;
 
 slider.addEventListener('input', (e) => {
-  pwdLength = slider.value;
   displayPwdLength.textContent = `Length (${slider.value})`;
 
   if (slider.value >= 16) {
@@ -56,15 +52,38 @@ pwdOptions.addEventListener('change', (e) => {
 pwdGenerateBtn.addEventListener('click', (e) => {
   let validOption = checkBoxes();
   if (validOption) {
-    randomPwdOne = generateRandomPwd(pwdLength);
-    randomPwdTwo = generateRandomPwd(pwdLength);
-    pwdOneEl.textContent = randomPwdOne;
-    pwdTwoEl.textContent = randomPwdTwo;
+    randomPwdOne = generateRandomPwd(slider.value);
+    randomPwdTwo = generateRandomPwd(slider.value);
+    displayPwd(randomPwdOne, randomPwdTwo);
   } else {
     alert('You must check at least one box.');
   }
   e.preventDefault();
 });
+
+pwdSection.addEventListener('click', (e) => {
+  const text = e.target.textContent;
+  const type = 'text/plain';
+  const blob = new Blob([text], { type });
+  const data = [new ClipboardItem({ [type]: blob })];
+
+  navigator.clipboard.write(data).then(() => {
+    text;
+  });
+});
+
+function displayPwd(pwd1, pwd2) {
+  pwdOneEl.textContent = pwd1;
+  addCopyImg(pwdOneEl);
+  pwdTwoEl.textContent = pwd2;
+  addCopyImg(pwdTwoEl);
+}
+
+function addCopyImg(pwdEl) {
+  const copyImg = document.createElement('img');
+  copyImg.src = 'imgs/copy-regular.svg';
+  pwdEl.appendChild(copyImg);
+}
 
 function checkBoxes() {
   for (const key in options) {
@@ -72,6 +91,7 @@ function checkBoxes() {
       return true;
     }
   }
+  return false;
 }
 
 function generateRandomPwd(length) {

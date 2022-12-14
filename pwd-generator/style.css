@@ -50,6 +50,10 @@ input[type='checkbox'] {
 #pwd-generate-btn {
   background: none;
 }
+
+.copy-img {
+  display: block;
+}
 /* utilities */
 .pointer {
   cursor: pointer;
