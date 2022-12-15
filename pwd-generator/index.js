@@ -9,6 +9,7 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 const displayPwdLength = document.querySelector('#display-length');
 const slider = document.querySelector('#slider');
 const pwdGenerateBtn = document.querySelector('#pwd-generate-btn');
+const headColorText = document.querySelector('#head-color-text');
 const pwdOneEl = document.querySelector('#pwd-one');
 const pwdTwoEl = document.querySelector('#pwd-two');
 const pwdOptions = document.querySelector('#pwd-options');
@@ -23,15 +24,17 @@ let options = {
 let randomPwdOne = '';
 let randomPwdTwo = '';
 
+let pwdGenerated = false;
+
 slider.addEventListener('input', (e) => {
   displayPwdLength.textContent = `Length (${slider.value})`;
 
   if (slider.value >= 16) {
-    pwdGenerateBtn.style = 'background-color:#10b981';
+    headColorText.style = 'color:#10b981';
   } else if (slider.value < 9) {
-    pwdGenerateBtn.style = 'background-color:rgba(242, 193, 78, 1)';
+    headColorText.style = 'color:rgba(227, 23, 10, 1)';
   } else {
-    pwdGenerateBtn.style = 'background-color:rgba(247, 129, 84, 1)';
+    headColorText.style = 'color:rgba(247, 179, 43, 1)';
   }
 });
 
@@ -51,6 +54,7 @@ pwdOptions.addEventListener('change', (e) => {
 
 pwdGenerateBtn.addEventListener('click', (e) => {
   let validOption = checkBoxes();
+
   if (validOption) {
     randomPwdOne = generateRandomPwd(slider.value);
     randomPwdTwo = generateRandomPwd(slider.value);
@@ -61,27 +65,51 @@ pwdGenerateBtn.addEventListener('click', (e) => {
   e.preventDefault();
 });
 
-pwdSection.addEventListener('click', (e) => {
-  const text = e.target.textContent;
+pwdOneEl.addEventListener('click', (e) => {
+  pwdGenerated = true;
+  copyToClipboard(e.target);
+});
+
+pwdTwoEl.addEventListener('click', (e) => {
+  pwdGenerated = true;
+  copyToClipboard(e.target);
+});
+
+function copyToClipboard(target) {
+  let text = target.textContent;
+  if (pwdGenerated)
+    if (target.id === 'copy-img-one' || target.id === 'copy-img-two') {
+      text = target.previousSibling.textContent;
+    }
   const type = 'text/plain';
   const blob = new Blob([text], { type });
   const data = [new ClipboardItem({ [type]: blob })];
-
   navigator.clipboard.write(data).then(() => {
-    text;
+    text,
+      () => {
+        '';
+      };
   });
-});
+}
 
 function displayPwd(pwd1, pwd2) {
   pwdOneEl.textContent = pwd1;
   addCopyImg(pwdOneEl);
+  pwdOneEl.classList.add('pointer');
   pwdTwoEl.textContent = pwd2;
   addCopyImg(pwdTwoEl);
+  pwdTwoEl.classList.add('pointer');
 }
 
 function addCopyImg(pwdEl) {
   const copyImg = document.createElement('img');
-  copyImg.src = 'imgs/copy-regular.svg';
+  copyImg.src = 'imgs/copy-solid.svg';
+  copyImg.classList.add('copy-img');
+  if (pwdEl.id === 'pwd-one') {
+    copyImg.setAttribute('id', 'copy-img-one');
+  } else {
+    copyImg.setAttribute('id', 'copy-img-two');
+  }
   pwdEl.appendChild(copyImg);
 }
 
