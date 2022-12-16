@@ -8,7 +8,7 @@
   "plugins": ["prettier", "jsx-a11y", "html"],
   "rules": {
     "no-unused-vars": "warn",
-    "no-console": "warn",
+    "no-console": 2,
     "func-names": "off",
     "object-shorthand": "off",
     "no-plusplus": "off",
