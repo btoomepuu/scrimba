@@ -58,7 +58,8 @@ pwdGenerateBtn.addEventListener('click', (e) => {
   if (validOption) {
     randomPwdOne = generateRandomPwd(slider.value);
     randomPwdTwo = generateRandomPwd(slider.value);
-    displayPwd(randomPwdOne, randomPwdTwo);
+    displayPwd(randomPwdOne, pwdOneEl);
+    displayPwd(randomPwdTwo, pwdTwoEl);
   } else {
     alert('You must check at least one box.');
   }
@@ -67,50 +68,25 @@ pwdGenerateBtn.addEventListener('click', (e) => {
 
 pwdOneEl.addEventListener('click', (e) => {
   pwdGenerated = true;
-  copyToClipboard(e.target);
+  copy(e.target);
 });
 
 pwdTwoEl.addEventListener('click', (e) => {
   pwdGenerated = true;
-  copyToClipboard(e.target);
+  copy(e.target);
 });
 
-function copyToClipboard(target) {
-  let text = target.textContent;
-  if (pwdGenerated)
-    if (target.id === 'copy-img-one' || target.id === 'copy-img-two') {
-      text = target.previousSibling.textContent;
-    }
-  const type = 'text/plain';
-  const blob = new Blob([text], { type });
-  const data = [new ClipboardItem({ [type]: blob })];
-  navigator.clipboard.write(data).then(() => {
-    text,
-      () => {
-        '';
-      };
-  });
-}
-
-function displayPwd(pwd1, pwd2) {
-  pwdOneEl.textContent = pwd1;
-  addCopyImg(pwdOneEl);
-  pwdOneEl.classList.add('pointer');
-  pwdTwoEl.textContent = pwd2;
-  addCopyImg(pwdTwoEl);
-  pwdTwoEl.classList.add('pointer');
+function displayPwd(pwd, pwdEl) {
+  pwdEl.textContent = pwd;
+  addCopyImg(pwdEl);
+  pwdEl.classList.add('pointer');
 }
 
 function addCopyImg(pwdEl) {
   const copyImg = document.createElement('img');
   copyImg.src = 'imgs/copy-solid.svg';
   copyImg.classList.add('copy-img');
-  if (pwdEl.id === 'pwd-one') {
-    copyImg.setAttribute('id', 'copy-img-one');
-  } else {
-    copyImg.setAttribute('id', 'copy-img-two');
-  }
-  pwdEl.appendChild(copyImg);
+  pwdEl.append(copyImg);
 }
 
 function checkBoxes() {
@@ -147,4 +123,12 @@ function charsIncluded() {
   }
 
   return chars;
+}
+
+function copy(target) {
+  let text = target.textContent;
+  if (target.classList.contains('copy-img')) {
+    text = target.previousSibling.textContent;
+  }
+  navigator.clipboard.writeText(text);
 }
