@@ -24,49 +24,43 @@ let time = 720;
 let counter;
 
 homeTeam.addEventListener('click', (e) => {
-  if (inPlay) {
-  }
-
   const target = e.target.id;
-
-  switch (target) {
-    case 'home1-point':
-      addPoints('home', 1);
-      break;
-    case 'home2-point':
-      addPoints('home', 2);
-      break;
-    case 'home3-point':
-      addPoints('home', 3);
-      break;
-    case 'home-add-foul':
-      addFoul('home');
-      break;
-  }
+  if (inPlay)
+    switch (target) {
+      case 'home1-point':
+        addPoints('home', 1);
+        break;
+      case 'home2-point':
+        addPoints('home', 2);
+        break;
+      case 'home3-point':
+        addPoints('home', 3);
+        break;
+      case 'home-add-foul':
+        addFoul('home');
+        break;
+    }
 
   checkWinner();
 });
 
 guestTeam.addEventListener('click', (e) => {
-  if (inPlay) {
-  }
-
   const target = e.target.id;
-
-  switch (target) {
-    case 'guest1-point':
-      addPoints('guest', 1);
-      break;
-    case 'guest2-point':
-      addPoints('guest', 2);
-      break;
-    case 'guest3-point':
-      addPoints('guest', 3);
-      break;
-    case 'guest-add-foul':
-      addFoul('guest');
-      break;
-  }
+  if (inPlay)
+    switch (target) {
+      case 'guest1-point':
+        addPoints('guest', 1);
+        break;
+      case 'guest2-point':
+        addPoints('guest', 2);
+        break;
+      case 'guest3-point':
+        addPoints('guest', 3);
+        break;
+      case 'guest-add-foul':
+        addFoul('guest');
+        break;
+    }
   checkWinner();
 });
 
@@ -175,6 +169,7 @@ function bonusCheck(targetTeam, fouls) {
 }
 
 function reset() {
+  inPlay = false;
   homePoints.textContent = 0;
   homeFouls.textContent = 0;
   homeBonus1.style.color = null;
