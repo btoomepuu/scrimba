@@ -1,10 +1,41 @@
+/*version 2:
+add length key to options to dynamically create boxes for multiple passwords
+querySelectAll created boxes to call generateRandomPwd and displayPwd for value of length
+*/
 // prettier-ignore
-const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
-"/"];
-
-// choose pwd length,
-// copy on click,
-// symbols or numbers in pwd
+const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const symbols = [
+  '~',
+  '`',
+  '!',
+  '@',
+  '#',
+  '$',
+  '%',
+  '^',
+  '&',
+  '*',
+  '(',
+  ')',
+  '_',
+  '-',
+  '+',
+  '=',
+  '{',
+  '[',
+  '}',
+  ']',
+  ',',
+  '|',
+  ':',
+  ';',
+  '<',
+  '>',
+  '.',
+  '?',
+  '/',
+];
 
 const displayPwdLength = document.querySelector('#display-length');
 const slider = document.querySelector('#slider');
@@ -14,12 +45,6 @@ const pwdOneEl = document.querySelector('#pwd-one');
 const pwdTwoEl = document.querySelector('#pwd-two');
 const pwdOptions = document.querySelector('#pwd-options');
 const pwdSection = document.querySelector('#pwd-section');
-
-let options = {
-  letters: true,
-  numbers: true,
-  symbols: false,
-};
 
 let randomPwdOne = '';
 let randomPwdTwo = '';
@@ -38,31 +63,18 @@ slider.addEventListener('input', (e) => {
   }
 });
 
-pwdOptions.addEventListener('change', (e) => {
-  switch (e.target.id) {
-    case 'letters-box':
-      options.letters = e.target.checked;
-      break;
-    case 'numbers-box':
-      options.numbers = e.target.checked;
-      break;
-    case 'symbols-box':
-      options.symbols = e.target.checked;
-      break;
-  }
-});
-
 pwdGenerateBtn.addEventListener('click', (e) => {
-  let validOption = checkBoxes();
+  let pwdChars = charsIncluded();
 
-  if (validOption) {
-    randomPwdOne = generateRandomPwd(slider.value);
-    randomPwdTwo = generateRandomPwd(slider.value);
+  if (pwdChars.length > 0) {
+    randomPwdOne = generateRandomPwd(slider.value, pwdChars);
+    randomPwdTwo = generateRandomPwd(slider.value, pwdChars);
     displayPwd(randomPwdOne, pwdOneEl);
     displayPwd(randomPwdTwo, pwdTwoEl);
   } else {
     alert('You must check at least one box.');
   }
+
   e.preventDefault();
 });
 
@@ -89,37 +101,28 @@ function addCopyImg(pwdEl) {
   pwdEl.append(copyImg);
 }
 
-function checkBoxes() {
-  for (const key in options) {
-    if (options[key]) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function generateRandomPwd(length) {
+function generateRandomPwd(length, charsArray) {
   let newPwd = '';
-  let pwdChars = charsIncluded();
   while (newPwd.length < length) {
-    let charIndex = Math.floor(Math.random() * pwdChars.length);
-    newPwd += pwdChars[charIndex];
+    let charIndex = Math.floor(Math.random() * charsArray.length);
+    newPwd += charsArray[charIndex];
   }
   return newPwd;
 }
-
 function charsIncluded() {
   let chars = [];
-  if (options.letters) {
-    chars = chars.concat(characters.slice(0, 52));
+  if (document.getElementById('letters-box').checked) {
+    chars = chars.concat(letters);
   }
 
-  if (options.numbers) {
-    chars = chars.concat(characters.slice(52, 62));
+  if (document.getElementById('numbers-box').checked) {
+    chars = chars.concat(numbers);
+    chars = [...chars];
   }
 
-  if (options.symbols) {
-    chars = chars.concat(characters.slice(62, 91));
+  if (document.getElementById('symbols-box').checked) {
+    chars = chars.concat(symbols);
+    chars = [...chars];
   }
 
   return chars;
