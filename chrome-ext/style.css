@@ -1,13 +1,13 @@
 * {
   margin: 0;
   padding: 0;
-  max-width: 400px;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   margin-top: 1rem;
+  min-width: 400px;
   padding: 0 0.6rem;
 }
 
@@ -18,19 +18,16 @@ body {
   border: 1px solid #5f9341;
 }
 
-#input-btn {
+button {
   padding: 1rem 2rem;
   color: white;
   background-color: #5f9341;
-  border: none;
+  border: 1px solid #5f9341;
   font-weight: bold;
 }
 #delete-btn {
-  padding: 1rem 2rem;
   color: #5f9341;
-  border: 1px solid #5f9341;
   background-color: white;
-  font-weight: bold;
 }
 
 input:focus {

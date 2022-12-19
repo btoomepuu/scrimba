@@ -1,7 +1,9 @@
 let myLeads = [];
+const tabs = [{ url: 'https://www.linkedin.com/in/per-harald-borgen/' }];
 
 const inputEl = document.querySelector('#input-el');
 const inputBtn = document.querySelector('#input-btn');
+const tabBtn = document.querySelector('#tab-btn');
 const deleteBtn = document.querySelector('#delete-btn');
 const ulEl = document.querySelector('#ul-el');
 
@@ -33,6 +35,15 @@ inputBtn.addEventListener('click', (e) => {
 
   localStorage.setItem('myleads', JSON.stringify(myLeads));
   render(myLeads);
+});
+
+tabBtn.addEventListener('click', (e) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    console.log(tabs);
+    myLeads.push(tabs[0].url);
+    localStorage.setItem('myleads', JSON.stringify(myLeads));
+    render(myLeads);
+  });
 });
 
 deleteBtn.addEventListener('dblclick', (e) => {

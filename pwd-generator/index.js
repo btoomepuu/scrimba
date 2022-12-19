@@ -9,22 +9,16 @@ const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const symbols = ['~','`','!','@','#','$','%','^','&','*','(',')','_','-','+','=','{','[','}',']',',','|',':',';','<','>','.','?','/'];
 console.log('ready');
 
-const displayPwdLength = document.querySelector('#display-length');
+const pwdLengthEl = document.querySelector('#display-length');
 const slider = document.querySelector('#slider');
 const pwdGenerateBtn = document.querySelector('#pwd-generate-btn');
 const headColorText = document.querySelector('#head-color-text');
 const pwdOneEl = document.querySelector('#pwd-one');
-const pwdTwoEl = document.querySelector('#pwd-two');
-const pwdOptions = document.querySelector('#pwd-options');
 const pwdSection = document.querySelector('#pwd-section');
-
-let randomPwdOne = '';
-let randomPwdTwo = '';
-
-let pwdGenerated = false;
+const slotsEl = document.getElementById('pwd-section').children;
 
 slider.addEventListener('input', (e) => {
-  displayPwdLength.textContent = `Length (${slider.value})`;
+  pwdLengthEl.textContent = `Length (${slider.value})`;
 
   if (slider.value >= 16) {
     headColorText.style = 'color:#10b981';
@@ -39,10 +33,9 @@ pwdGenerateBtn.addEventListener('click', (e) => {
   let pwdChars = charsIncluded();
 
   if (pwdChars.length > 0) {
-    randomPwdOne = generateRandomPwd(slider.value, pwdChars);
-    randomPwdTwo = generateRandomPwd(slider.value, pwdChars);
-    displayPwd(randomPwdOne, pwdOneEl);
-    displayPwd(randomPwdTwo, pwdTwoEl);
+    for (slot of slotsEl) {
+      displayPwd(generateRandomPwd(slider.value, pwdChars), slot);
+    }
   } else {
     alert('You must check at least one box.');
   }
@@ -50,13 +43,7 @@ pwdGenerateBtn.addEventListener('click', (e) => {
   e.preventDefault();
 });
 
-pwdOneEl.addEventListener('click', (e) => {
-  pwdGenerated = true;
-  copy(e.target);
-});
-
-pwdTwoEl.addEventListener('click', (e) => {
-  pwdGenerated = true;
+pwdSection.addEventListener('click', (e) => {
   copy(e.target);
 });
 
