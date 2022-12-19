@@ -11,8 +11,7 @@ body {
 }
 
 #container {
-  width: 555px;
-  height: 555px;
+  max-width: 555px;
   margin: 2rem auto;
   padding: 5rem 3rem;
   background: #273549;
@@ -91,6 +90,8 @@ input[type='checkbox'] {
 
 #pwd-section {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   color: rgba(16, 185, 129, 1);
 }
