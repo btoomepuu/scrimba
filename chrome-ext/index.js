@@ -1,13 +1,11 @@
 let myLeads = [];
-const tabs = [{ url: 'https://www.linkedin.com/in/per-harald-borgen/' }];
 
 const inputEl = document.querySelector('#input-el');
 const inputBtn = document.querySelector('#input-btn');
 const tabBtn = document.querySelector('#tab-btn');
 const deleteBtn = document.querySelector('#delete-btn');
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem('myLeads'));
 const ulEl = document.querySelector('#ul-el');
-
-const leadsFromLocalStorage = JSON.parse(localStorage.getItem('myleads'));
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
@@ -39,9 +37,8 @@ inputBtn.addEventListener('click', (e) => {
 
 tabBtn.addEventListener('click', (e) => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    console.log(tabs);
     myLeads.push(tabs[0].url);
-    localStorage.setItem('myleads', JSON.stringify(myLeads));
+    localStorage.setItem('myLeads', JSON.stringify(myLeads));
     render(myLeads);
   });
 });
