@@ -36,10 +36,9 @@ const icons = [
 ];
 
 const mainEl = document.querySelector('#main-content');
-
 displayPost(posts);
+
 const sectionEls = document.querySelectorAll('section');
-console.log(sectionEls);
 
 sectionEls.forEach((e) => {
   e.addEventListener('dblclick', (e) => {
@@ -60,13 +59,31 @@ function increaseLikes(targetSection) {
 
   const obj = posts.find((obj) => {
     if (obj.name === targetSection.id) {
-      obj.likes++;
+      if (obj.likedByUser) {
+        obj.likes--;
+        likes = obj.likes;
+        obj.likedByUser = false;
+        updateHeart(targetSection, false);
+      } else {
+        obj.likes++;
+        obj.likedByUser = true;
+        updateHeart(targetSection, true);
+      }
       likes = obj.likes;
     }
   });
 
   const likesEl = targetSection.querySelector('.likes');
   likesEl.textContent = `${likes} likes`;
+}
+
+function updateHeart(targetSection, bool) {
+  const heartImgEl = targetSection.querySelector('.heart');
+  if (bool) {
+    heartImgEl.src = 'images/icon-redheart.png';
+    return;
+  }
+  heartImgEl.src = 'images/icon-heart.png';
 }
 
 function displayPost(posts) {
