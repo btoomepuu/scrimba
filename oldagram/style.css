@@ -1,0 +1,81 @@
+@font-face {
+  font-family: Billabong;
+  src: url(images/Billabong.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-family: Billabong;
+  font-size: 2.8rem;
+}
+
+.avatar {
+  max-width: 2.7rem;
+  border-radius: 50%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 390px;
+  border: 0.1em solid #c6c6c6;
+}
+
+.logo-avatar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.1rem #c6c6c6 solid;
+  padding: 0.5rem;
+}
+
+.poster-info-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 1em;
+  padding: 0.5rem;
+  font-size: small;
+}
+
+.post-img {
+  width: 100%;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 0.5rem;
+}
+
+.icon:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.icon {
+  max-width: 1.75rem;
+  margin-right: 0.5rem;
+}
+
+.likes-comments-container {
+  padding-left: 0.85rem;
+  font-size: small;
+  line-height: 1.6rem;
+  border-bottom: 1.6rem solid #ededed;
+}
+
+.username,
+.likes,
+.name {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
