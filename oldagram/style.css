@@ -1,8 +1,3 @@
-@font-face {
-  font-family: Billabong;
-  src: url(images/Billabong.ttf);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -69,7 +64,7 @@ h1 {
 }
 
 .likes-comments-container {
-  padding-left: 0.85rem;
+  padding: 0 0 0.85rem 0.85rem;
   font-size: small;
   line-height: 1.6rem;
   border-bottom: 1.6rem solid #ededed;
