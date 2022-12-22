@@ -87,6 +87,7 @@ sectionEls.forEach((e) => {
 function increaseLikes(targetSection) {
   let likes;
   const targetId = parseInt(targetSection.id);
+
   const obj = posts.find((obj) => {
     if (obj.index === targetId) {
       if (obj.likedByUser) {
@@ -102,6 +103,7 @@ function increaseLikes(targetSection) {
       }
     }
   });
+
   const likesEl = targetSection.querySelector('.likes');
   likesEl.textContent = `${likes} likes`;
 }
