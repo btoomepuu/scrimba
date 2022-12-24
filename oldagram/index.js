@@ -48,7 +48,7 @@ function renderPosts() {
         </div>
       </div>
 
-      <div aria-label="imgage post">
+      <div aria-label="posted image">
         <img class="post-img" src="${obj.post}" alt="post by ${obj.name}" />
       </div>
 
@@ -87,26 +87,21 @@ sectionEls.forEach((e) => {
 });
 
 function increaseLikes(targetSection) {
-  let likes;
-  const targetId = parseInt(targetSection.id);
-  const obj = posts.find((obj) => {
-    if (obj.index === targetId) {
-      if (obj.likedByUser) {
-        obj.likes--;
-        likes = obj.likes;
-        obj.likedByUser = false;
-        updateHeart(targetSection, false);
-      } else {
-        obj.likes++;
-        likes = obj.likes;
-        obj.likedByUser = true;
-        updateHeart(targetSection, true);
-      }
-    }
-  });
-  const likesEl = targetSection.querySelector('.likes');
-  likesEl.textContent = `${likes} likes`;
+  const heartImgEl = targetSection.querySelector('.heart');
+  const likes = targetSection.querySelector('.likes');
+  const targetId = targetSection.id;
+
+  if (heartImgEl.src.includes(RED_HEART_ICON)) {
+    posts[targetId].likes--;
+    heartImgEl.src = HEART_ICON;
+  } else {
+    posts[targetId].likes++;
+    heartImgEl.src = RED_HEART_ICON;
+  }
+
+  likes.textContent = `${posts[targetId].likes} likes`;
 }
+xtContent = `${likes} likes`;
 
 function increaseLikes(targetSection) {
   const heartImgEl = targetSection.querySelector('.heart');
