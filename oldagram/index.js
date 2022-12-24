@@ -48,20 +48,20 @@ function renderPosts() {
         </div>
       </div>
 
-      <div>
+      <div aria-label="imgage post">
         <img class="post-img" src="${obj.post}" alt="post by ${obj.name}" />
       </div>
 
-      <div class="icon-container">
+      <nav class="icon-container">
         <img class="heart icon" src="images/icon-heart.png" alt="heart icon" />
         <img class="comment icon" src="images/icon-comment.png" alt="comment icon" />
         <img class="dm icon" src="images/icon-dm.png" alt="dm icon" />
-      </div>
+      </nav>
 
-      <div class="likes-comments-container">
+      <details class="likes-comments-container">
         <p class="likes">${obj.likes} likes</p>
         <p class="comment" ><span class="username" >${obj.username}</span> ${obj.comment}</p>
-      </div>
+      </details>
     </section> `;
 
     mainEl.innerHTML += section;
