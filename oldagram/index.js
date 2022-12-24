@@ -33,6 +33,8 @@ const posts = [
 ];
 
 const mainEl = document.querySelector('.main-content');
+const HEART_ICON = 'images/icon-heart.png';
+const RED_HEART_ICON = 'images/icon-redheart.png';
 
 function renderPosts() {
   posts.forEach((obj) => {
@@ -46,20 +48,20 @@ function renderPosts() {
         </div>
       </div>
 
-      <div>
+      <div aria-label="posted image">
         <img class="post-img" src="${obj.post}" alt="post by ${obj.name}" />
       </div>
 
-      <div class="icon-container">
+      <nav class="icon-container">
         <img class="heart icon" src="images/icon-heart.png" alt="heart icon" />
         <img class="comment icon" src="images/icon-comment.png" alt="comment icon" />
         <img class="dm icon" src="images/icon-dm.png" alt="dm icon" />
-      </div>
+      </nav>
 
-      <div class="likes-comments-container">
+      <details class="likes-comments-container">
         <p class="likes">${obj.likes} likes</p>
         <p class="comment" ><span class="username" >${obj.username}</span> ${obj.comment}</p>
-      </div>
+      </details>
     </section> `;
 
     mainEl.innerHTML += section;
@@ -85,28 +87,21 @@ sectionEls.forEach((e) => {
 });
 
 function increaseLikes(targetSection) {
-  let likes;
-  const targetId = parseInt(targetSection.id);
+  const heartImgEl = targetSection.querySelector('.heart');
+  const likes = targetSection.querySelector('.likes');
+  const targetId = targetSection.id;
 
-  const obj = posts.find((obj) => {
-    if (obj.index === targetId) {
-      if (obj.likedByUser) {
-        obj.likes--;
-        likes = obj.likes;
-        obj.likedByUser = false;
-        updateHeart(targetSection, false);
-      } else {
-        obj.likes++;
-        likes = obj.likes;
-        obj.likedByUser = true;
-        updateHeart(targetSection, true);
-      }
-    }
-  });
+  if (heartImgEl.src.includes(RED_HEART_ICON)) {
+    posts[targetId].likes--;
+    heartImgEl.src = HEART_ICON;
+  } else {
+    posts[targetId].likes++;
+    heartImgEl.src = RED_HEART_ICON;
+  }
 
-  const likesEl = targetSection.querySelector('.likes');
-  likesEl.textContent = `${likes} likes`;
+  likes.textContent = `${posts[targetId].likes} likes`;
 }
+xtContent = `${likes} likes`;
 
 function updateHeart(targetSection, bool) {
   const heartImgEl = targetSection.querySelector('.heart');
