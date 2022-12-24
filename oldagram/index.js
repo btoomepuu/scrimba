@@ -103,11 +103,18 @@ function increaseLikes(targetSection) {
 }
 xtContent = `${likes} likes`;
 
-function updateHeart(targetSection, bool) {
+function increaseLikes(targetSection) {
   const heartImgEl = targetSection.querySelector('.heart');
-  if (bool) {
-    heartImgEl.src = 'images/icon-redheart.png';
-    return;
+  const likes = targetSection.querySelector('.likes');
+  const targetId = targetSection.id;
+
+  if (heartImgEl.src.includes(RED_HEART_ICON)) {
+    posts[targetId].likes--;
+    heartImgEl.src = HEART_ICON;
+  } else {
+    posts[targetId].likes++;
+    heartImgEl.src = RED_HEART_ICON;
   }
-  heartImgEl.src = 'images/icon-heart.png';
+
+  likes.textContent = `${posts[targetId].likes} likes`;
 }
