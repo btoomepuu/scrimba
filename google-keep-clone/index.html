@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/d8d7cb5877.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Google+Sans:400,500&mp;display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Keep Clone</title>
+  </head>
+  <body>
+    <div class="modal">
+      <div class="modal-content">
+        <label for="note-title" class="visually-hidden">Title</label>
+        <input class="modal-title" name="note-title" placeholder="Title" />
+
+        <label for="note-text" class="visually-hidden">Take a note...</label>
+        <input
+          class="modal-text"
+          name="note-text"
+          placeholder="Take a note..."
+        />
+        <span class="modal-close-button">Close</span>
+      </div>
+    </div>
+    <main>
+      <header>
+        <img
+          class="header-logo"
+          src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
+          alt="logo"
+        />
+        <h1 class="header-title">Keep</h1>
+      </header>
+
+      <div id="form-container">
+        <form id="form" autocomplete="off">
+          <label for="note-title" class="visually-hidden">Title</label>
+          <input id="note-title" name="note-title" />
+
+          <label for="note-text" class="visually-hidden">Take a note...</label>
+          <input id="note-text" placeholder="Take a note..." />
+
+          <div id="form-buttons">
+            <button type="submit" id="submit-button" aria-label="submit button">
+              Submit
+            </button>
+            <button
+              type="button"
+              id="form-close-button"
+              aria-label="close form button"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="notes"></div>
+      <div id="placeholder">
+        <img id="placeholder-logo" src="" alt="logo" />
+        <p id="placeholder-text">Notes you add appear here</p>
+      </div>
+
+      <div id="color-tooltip">
+        <div class="color-option" data-color="#fff" id="white"></div>
+        <div class="color-option" data-color="#d7aefb" id="purple"></div>
+        <div class="color-option" data-color="#fbbc04" id="orange"></div>
+        <div class="color-option" data-color="#a7ffeb" id="teal"></div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
