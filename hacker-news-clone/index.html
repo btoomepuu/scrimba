@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hacker News Clone</title>
+  </head>
+  <body>
+    <div id="root">
+      <header class="header">
+        <h1 style="display: none">Hacker News</h1>
+        <div class="flex">
+          <span class="header-title">
+            <img
+              class="header-logo"
+              src="https://news.ycombinator.com/y18.gif"
+              alt="hacker news logo"
+            />
+            HackerNews
+          </span>
+
+          <nav>
+            <a href="#/newstories" class="header-link" aria-label="new link"
+              >new</a
+            >
+            <a href="#/beststories" class="header-link" aria-label="best link"
+              >past</a
+            >
+            <a href="#/askstories" class="header-link" aria-label="ask link"
+              >ask</a
+            >
+            <a href="#/showstories" class="header-link" aria-label="show link"
+              >show</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <div id="route-container">
+        <div id="router-outlet"></div>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+    <script src="//unpkg.com/navigo@6"></script>
+  </body>
+</html>
