@@ -205,8 +205,8 @@ class App {
 	  <div class="note-text">${note.text}</div>
 	  <div class="toolbar-container">
 		<div class="toolbar">
-			<i class="fa-thin fa-palette toolbar-color" data-id="${note.id}"></i>
-			<img class="toolbar-delete" data-id="${note.id}" src="">
+			<i class="fa-regular fa-palette toolbar-color" data-id="${note.id}"></i>
+			<i class="fa-regular fa-trash toolbar-delete"></i>
 		</div>
 	  </div>
 	</div>
