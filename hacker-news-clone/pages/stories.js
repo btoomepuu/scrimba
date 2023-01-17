@@ -1,16 +1,43 @@
 import Story from '../components/Story.js';
 import view from '../utils/view.js';
 import { baseUrl, itemUrl } from '../utils/urls.js';
+import checkFavorite from '../utils/checkFavorite.js';
+import store from '../store.js';
 
 export async function Stories(path) {
+  const { favorites } = store.getState();
   const stories = await getStories(path);
   const hasStories = stories.length > 0;
 
   view.innerHTML = `<div>${
     hasStories
-      ? stories.map((story, i) => Story({ ...story, index: i + 1 })).join('')
+      ? stories
+          .map((story, i) =>
+            Story({
+              ...story,
+              index: i + 1,
+              isFavorite: checkFavorite(favorites, story),
+            })
+          )
+          .join('')
       : 'No stories'
   }</div>`;
+
+  document.querySelectorAll('.favorite').forEach((favoriteButton) => {
+    favoriteButton.addEventListener('click', async function () {
+      const story = JSON.parse(this.dataset.story);
+      const isFavorited = checkFavorite(favorites, story);
+      if (isFavorited) {
+        store.dispatch({
+          type: 'REMOVE_FAVORITE',
+          payload: { favorite: story },
+        });
+      } else {
+        store.dispatch({ type: 'ADD_FAVORITE', payload: { favorite: story } });
+      }
+      await Stories(path);
+    });
+  });
 }
 
 export async function getStories(path) {

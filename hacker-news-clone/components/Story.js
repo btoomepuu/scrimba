@@ -16,9 +16,9 @@ export default function Story(story) {
         ${'kids' in story ? story.kids.length : 0} comments
       </a>
       |
-      <span class="favorite">
+      <span class="favorite" data="${JSON.stringify(story)}">
         <img src="./imgs/299063_heart_icon (1).png">
-        Add To Favorites
+        ${story.isFavorite ? 'Remove From Favorites' : 'Add To Favorites'}
       </span>
       </div>
     </div>
