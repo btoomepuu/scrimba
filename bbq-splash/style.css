@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: #404040;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* typography*/
+
+h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+
+h1 + p {
+  margin: 0;
+  color: #f18119;
+  font-size: 1.3125rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 1.3125rem;
+}
+
+h2 + p {
+  color: #f18119;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.top-text {
+  order: -1;
+  margin: 0 auto;
+  padding: 2px 0 0;
+  color: #f18119;
+  border-top: 5px solid #f18119;
+  border-image: linear-gradient(to left, #ff713b, #ffa51d) 1;
+  font-size: 0.625rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.fine-print {
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+}
+
+/*intro section*/
+
+.intro {
+  padding: 0 0.5em 2em;
+  background-color: #404040;
+  background-image: url(assets/images/ribs.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: center;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.container-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50vh;
+}
+
+/*form*/
+#register-form {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+label {
+  display: block;
+}
+
+input,
+.btn {
+  width: 100%;
+  border-radius: 5px;
+}
+
+input {
+  font-family: inherit;
+  text-align: inherit;
+  margin-bottom: 0.75em;
+  padding: 0.25em;
+  border: 1px solid #404040;
+  transform: scale(1);
+  transition: transform 250ms;
+}
+
+input:focus {
+  transform: scale(1.1);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75em 1em;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-image: linear-gradient(to left, #ff713b, #ffa51d);
+  /* background-color: #404040; */
+  color: white;
+  transform: scale(1);
+  transition: transform 300ms;
+  transition: background-color 250ms;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  /* background-color: #f18119; */
+  transform: scale(1.1);
+}
+
+/*main content*/
+
+.main-content {
+  padding: 2em 1em;
+}
+
+/*media queries*/
+
+@media (min-width: 625px) {
+  body {
+    display: flex;
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2,
+  h1 + p {
+    font-size: 1.75rem;
+  }
+
+  .intro,
+  .main-content {
+    width: 50%;
+    min-height: 100vh;
+  }
+
+  .container-intro {
+    height: 100%;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
